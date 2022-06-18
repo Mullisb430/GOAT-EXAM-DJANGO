@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+{% endblock styles %}
+
+{% block body %}
+<main>
+    <div id="questionContainer">
+        <h2 id="question">Question</h2>
+        <div id="answerContainer">
+            <p id="answerOne">answer one</p>
+            <p id="answerTwo">answer two</p>
+            <p id="answerThree">answer three</p>
+            <p id="answerFour">answer four</p>
+        </div>
+    </div>
+</main>
+    
+{% endblock body %}
