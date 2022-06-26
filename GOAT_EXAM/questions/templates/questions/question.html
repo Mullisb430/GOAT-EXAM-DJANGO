@@ -8,14 +8,36 @@
 {% block body %}
 <main>
     <div id="questionContainer">
-        <h2 id="question">{{ question[0].question }}</h2>
+        <h2 id="question">{{ question.question }}</h2>
         <div id="answerContainer">
-            <p id="answerOne">{{ question.answer_one }}</p>
-            <p id="answerTwo">{{ question.answer_two }}</p>
-            <p id="answerThree">{{ question.answer_three }}</p>
-            <p id="answerFour">{{ question.answer_four }}</p>
-        </div>
+            {% if question.id != 10 %}
+                <a href="/question/{{ question.id|add:"1" }}">
+                    <p id="answerOne">{{ question.answer_one }}</p>
+                </a>
+                <a href="/question/{{ question.id|add:"1" }}">
+                    <p id="answerTwo">{{ question.answer_two }}</p>
+                </a>
+                <a href="/question/{{ question.id|add:"1" }}">
+                    <p id="answerThree">{{ question.answer_three }}</p>
+                </a>
+                <a href="/question/{{ question.id|add:"1" }}">
+                    <p id="answerFour">{{ question.answer_four }}</p>
+                </a>
+            {% else %}
+                <a href="/career">
+                    <p id="answerOne">{{ question.answer_one }}</p>
+                </a>
+                <a href="/career">
+                    <p id="answerTwo">{{ question.answer_two }}</p>
+                </a>
+                <a href="/career">
+                    <p id="answerThree">{{ question.answer_three }}</p>
+                </a>
+                <a href="/career">
+                    <p id="answerFour">{{ question.answer_four }}</p>
+                </a>
+            {% endif %}
+        </div>  
     </div>
 </main>
-    
 {% endblock body %}
