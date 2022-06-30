@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block styles %}
+{% block head %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
-{% endblock styles %}
+{% endblock head %}
 
 {% block body %}
 <main>
@@ -14,11 +14,11 @@
         is required to take at the age of 16. Your answers are used to determine
         which occupation in the vault you will fit best in. Good luck!
     </p>
-        <button id='startButton'>
-            <a href="question/1/">
-                Start
-            </a>
-        </button>
+    <button id='startButton'>
+        <a href="question/1/">
+            Start
+        </a>
+    </button>
 </main>
     
 {% endblock body %}

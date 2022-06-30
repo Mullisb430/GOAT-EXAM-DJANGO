@@ -1,42 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block styles %}
+{% block head %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
-{% endblock styles %}
+{% endblock head %}
 
 {% block body %}
 <main>
     <div id="questionContainer">
         <h2 id="question">{{ question.question }}</h2>
         <div id="answerContainer">
-            {% if question.id != 10 %}
-                <a href="/question/{{ question.id|add:"1" }}">
-                    <p id="answerOne">{{ question.answer_one }}</p>
-                </a>
-                <a href="/question/{{ question.id|add:"1" }}">
-                    <p id="answerTwo">{{ question.answer_two }}</p>
-                </a>
-                <a href="/question/{{ question.id|add:"1" }}">
-                    <p id="answerThree">{{ question.answer_three }}</p>
-                </a>
-                <a href="/question/{{ question.id|add:"1" }}">
-                    <p id="answerFour">{{ question.answer_four }}</p>
-                </a>
-            {% else %}
-                <a href="/career">
-                    <p id="answerOne">{{ question.answer_one }}</p>
-                </a>
-                <a href="/career">
-                    <p id="answerTwo">{{ question.answer_two }}</p>
-                </a>
-                <a href="/career">
-                    <p id="answerThree">{{ question.answer_three }}</p>
-                </a>
-                <a href="/career">
-                    <p id="answerFour">{{ question.answer_four }}</p>
-                </a>
-            {% endif %}
+            <form method="post">
+                {% csrf_token %} 
+                <input type='submit' name='answer_one' value='{{ question.answer_one }}'>
+                <input type='submit' name='answer_two' value='{{ question.answer_two }}'>
+                <input type='submit' name='answer_three' value='{{ question.answer_three }}'>
+                <input type='submit' name='answer_four' value='{{ question.answer_four }}'>
+                <input type='hidden' name='skills' value='{{ question.skills }}'>
+            </form>
         </div>  
     </div>
 </main>

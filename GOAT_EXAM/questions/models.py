@@ -6,6 +6,7 @@ class Questions(models.Model):
     answer_two = models.TextField(max_length=250)
     answer_three = models.TextField(max_length=250)
     answer_four = models.TextField(max_length=250)
+    skills = models.CharField(max_length=100)
 
     def __str__(self):
         return self.question[0:10] + "...."
