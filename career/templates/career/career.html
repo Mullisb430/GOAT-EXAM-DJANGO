@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+{% endblock head %}
+
+{% block body %}
+
+    <h1>{{ career }}</h1>
+    <hr>
+    <main>
+        <div>
+            <h3>Strength</h3>
+            <h3>Perception</h3>
+            <h3>Endurance</h3>
+            <h3>Charisma</h3>
+            <h3>Intelligence</h3>
+            <h3>Agility</h3>
+            <h3>Luck</h3>
+        </div>
+        <hr>
+        <div>
+            <h5>Barter</h5>
+            <h5>Big Guns</h5>
+            <h5>Energy Weapons</h5>
+            <h5>Explosives</h5>
+            <h5>Lock Pick</h5>
+            <h5>Medicine</h5>
+            <h5>Melee Weapons</h5>
+            <h5>Repair</h5>
+            <h5>Science</h5>
+            <h5>Small Guns</h5>
+            <h5>Sneak</h5>
+            <h5>Speech</h5>
+            <h5>Unarmed</h5>
+        </div>
+    </main>
+{% endblock body %}

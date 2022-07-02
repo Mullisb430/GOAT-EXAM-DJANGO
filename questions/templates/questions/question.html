@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+{% endblock head %}
+
+{% block body %}
+<main>
+    <div id="questionContainer">
+        <h2 id="question">{{ question.question }}</h2>
+        <div id="answerContainer">
+            <form method="post">
+                {% csrf_token %} 
+                <button type='submit' name='answer_one'>
+                    {{ question.answer_one }}
+                </button>
+                <button type='submit' name='answer_two'>
+                    {{ question.answer_two }}
+                </button>
+                <button type='submit' name='answer_three'>
+                    {{ question.answer_three }}
+                </button>
+                <button type='submit' name='answer_four'>
+                    {{ question.answer_four }}
+                </button>
+                <input type='hidden' name='skills' value='{{ question.skills }}'>
+            </form>
+        </div>  
+    </div>
+</main>
+{% endblock body %}
