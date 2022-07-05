@@ -9,10 +9,13 @@ def index(request):
 
 def question(request, question_id):
 
+    # Delete the previous job assignment
+    # So that previous users can take the test again
+    if 'job' in request.session:
+        del request.session['job']
+
     if not 'answers' in request.session or question_id == 1:
         request.session['answers'] = []
-
-    
 
     # Logic for each answer chosen
     if 'answer_one' in request.POST:

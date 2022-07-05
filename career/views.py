@@ -1,8 +1,15 @@
+from pickle import NONE
 from django.shortcuts import render
 import random
+from .models import Career
+from .career import job
+
 
 def career(request):
-    career = careerAlgo(request)
+    if not 'job' in request.session:
+        request.session['job'] = careerAlgo(request)
+    
+    career = request.session['job']
 
     context = {
         'career' : career
@@ -16,7 +23,6 @@ def loading(request):
 
 
 def careerAlgo(request):
-
     POTENTIAL_CAREERS = ['Vault Chaplain', 'Laundry Cannon Operator', 'Pedicurist', 'Waste Management Specialist', 'Vault Loyalty Inspector', 'Clinical Test Subject', 'Fry Cook', 'Jukebox Technician', 'Pip-Boy Programmer', 'Tattoo Artist', 'Shift Supervisor', 'Marriage Counselor', 'Little League Coach', 'Masseuse']
 
     if not 'barter' in request.session['answers']:
@@ -57,10 +63,16 @@ def careerAlgo(request):
     elif not 'unarmed' in request.session['answers']:
         POTENTIAL_CAREERS.remove('Little League Coach')
 
-    career = random.choice(POTENTIAL_CAREERS)
+    role = random.choice(POTENTIAL_CAREERS)
+    role = Career.objects.get(name='Vault Chaplain')
+    return job(role.special, role.skills, role.name)
 
-    if career == 'Vault Chaplain':
-        pass
+     
+
+    
+
+    
+    
 
     
 
