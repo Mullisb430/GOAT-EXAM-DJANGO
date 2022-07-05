@@ -7,25 +7,28 @@
 
 {% block body %}
 <main>
-    <div id="questionContainer">
-        <h2 id="question">{{ question.question }}</h2>
-        <div id="answerContainer">
-            <form method="post">
-                {% csrf_token %} 
-                <button type='submit' name='answer_one'>
-                    {{ question.answer_one }}
-                </button>
-                <button type='submit' name='answer_two'>
-                    {{ question.answer_two }}
-                </button>
-                <button type='submit' name='answer_three'>
-                    {{ question.answer_three }}
-                </button>
-                <button type='submit' name='answer_four'>
-                    {{ question.answer_four }}
-                </button>
-                <input type='hidden' name='skills' value='{{ question.skills }}'>
-            </form>
+            <fieldset id='questionContainer'>
+                <legend align='left'>G.O.A.T. Question {{ question.id }}</legend>
+                <h2 id="question">{{ question.question }}</h2>
+                <form method="post">
+                    {% csrf_token %} 
+                    <div id="answerContainer">
+                        <button type='submit' name='answer_one'>
+                            {{ question.answer_one }}
+                        </button>
+                        <button type='submit' name='answer_two'>
+                            {{ question.answer_two }}
+                        </button>
+                        <button type='submit' name='answer_three'>
+                            {{ question.answer_three }}
+                        </button>
+                        <button type='submit' name='answer_four'>
+                            {{ question.answer_four }}
+                        </button>
+                        <input type='hidden' name='skills' value='{{ question.skills }}'>
+                    </div>
+                </form>
+            </fieldset>
         </div>  
     </div>
 </main>

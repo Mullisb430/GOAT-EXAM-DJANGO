@@ -1,11 +1,14 @@
 from pickle import NONE
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import random
 from .models import Career
 from .career import job
 
 
 def career(request):
+    if not 'answers' in request.session:
+        return redirect('/')
+
     if not 'job' in request.session:
         request.session['job'] = careerAlgo(request)
     
@@ -33,6 +36,7 @@ def careerAlgo(request):
 
     elif not 'energy' in request.session['answers']:
         POTENTIAL_CAREERS.remove('Pedicurist')
+
     elif not 'explosives' in request.session['answers']:
         POTENTIAL_CAREERS.remove('Waste Management Specialist')
 
@@ -64,7 +68,7 @@ def careerAlgo(request):
         POTENTIAL_CAREERS.remove('Little League Coach')
 
     role = random.choice(POTENTIAL_CAREERS)
-    role = Career.objects.get(name='Vault Chaplain')
+    role = Career.objects.get(name=role)
     return job(role.special, role.skills, role.name)
 
      
